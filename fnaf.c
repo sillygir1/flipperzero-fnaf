@@ -167,12 +167,20 @@ void load_progress(Fnaf* fnaf) {
         FURI_LOG_D(TAG, "No save data!");
         return;
     }
-    if(storage_file_open(fnaf->save_data, EXT_PATH(SAVE_PATH), FSAM_READ, FSOM_OPEN_EXISTING)) {
+    if(storage_file_open(
+           fnaf->save_data, EXT_PATH(SAVE_PATH), FSAM_READ_WRITE, FSOM_OPEN_EXISTING)) {
         char read[1] = {101};
         storage_file_seek(fnaf->save_data, 0, true);
         storage_file_read(fnaf->save_data, read, 1);
         FURI_LOG_D(TAG, "Read %u", read[0]);
-        if(read[0] < 6) fnaf->progress = read[0];
+        if(read[0] < 6) {
+            fnaf->progress = read[0];
+        } else {
+            fnaf->progress = 0;
+            char buff[1] = {fnaf->progress};
+            storage_file_seek(fnaf->save_data, 0, true);
+            storage_file_write(fnaf->save_data, buff, 1);
+        }
         storage_file_close(fnaf->save_data);
     } else {
         FURI_LOG_D(TAG, "Wtf just happened (file not open?)");
