@@ -8,6 +8,7 @@
 #include <storage/storage.h>
 
 #define TAG "flipperzero_fnaf"
+#define SAVE_PATH "apps_data/flipperzero_fnaf/save.txt"
 
 #include "flipperzero_fnaf_icons.h"
 #include "views/cameras.h"

@@ -151,11 +151,7 @@ void save_progress(Fnaf* fnaf) {
         FURI_LOG_D(TAG, "Custom night, no need to save.");
         return;
     }
-    if(storage_file_open(
-           fnaf->save_data,
-           EXT_PATH("apps_data/flipperzero_fnaf/save.txt"),
-           FSAM_WRITE,
-           FSOM_OPEN_ALWAYS)) {
+    if(storage_file_open(fnaf->save_data, EXT_PATH(SAVE_PATH), FSAM_WRITE, FSOM_OPEN_ALWAYS)) {
         FURI_LOG_D(TAG, "Saving... Progress = %u", fnaf->progress);
         char buff[1] = {fnaf->progress};
         uint16_t res = storage_file_write(fnaf->save_data, buff, 1);
@@ -167,15 +163,11 @@ void save_progress(Fnaf* fnaf) {
 }
 
 void load_progress(Fnaf* fnaf) {
-    if(!storage_file_exists(fnaf->storage, EXT_PATH("apps_data/flipperzero_fnaf/save.txt"))) {
+    if(!storage_file_exists(fnaf->storage, EXT_PATH(SAVE_PATH))) {
         FURI_LOG_D(TAG, "No save data!");
         return;
     }
-    if(storage_file_open(
-           fnaf->save_data,
-           EXT_PATH("apps_data/flipperzero_fnaf/save.txt"),
-           FSAM_READ,
-           FSOM_OPEN_EXISTING)) {
+    if(storage_file_open(fnaf->save_data, EXT_PATH(SAVE_PATH), FSAM_READ, FSOM_OPEN_EXISTING)) {
         char read[1] = {101};
         storage_file_seek(fnaf->save_data, 0, true);
         storage_file_read(fnaf->save_data, read, 1);
