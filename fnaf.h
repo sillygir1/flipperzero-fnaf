@@ -7,29 +7,29 @@
 #include <input/input.h>
 #include <storage/storage.h>
 
-#define TAG "flipperzero_fnaf"
+#define TAG       "flipperzero_fnaf"
 #define SAVE_PATH "apps_data/flipperzero_fnaf/save.txt"
 
 #include "flipperzero_fnaf_icons.h"
 #include "views/cameras.h"
 #include "views/office.h"
 
-#define blipper_time 4970
-#define chipper_time 4980
-#define flipper_time 3020
-#define flipper_might_move_time 167
-#define flipper_office_time 1000
-#define fopper_time 5010
-#define fopper_wait_time 25000
-#define fopper_run_time 2000 // not sure
+#define blipper_time              4970
+#define chipper_time              4980
+#define flipper_time              3020
+#define flipper_might_move_time   167
+#define flipper_office_time       1000
+#define fopper_time               5010
+#define fopper_wait_time          25000
+#define fopper_run_time           2000 // not sure
 #define blipper_chipper_wait_time 30000
-#define first_hour_time 90000
-#define hour_time 89000
-#define sound_time 1500
-#define power_time 1000
-#define power_out_time_period 5000
-#define power_out_max_time 20000
-#define move_rand_time 1000
+#define first_hour_time           90000
+#define hour_time                 89000
+#define sound_time                1500
+#define power_time                1000
+#define power_out_time_period     5000
+#define power_out_max_time        20000
+#define move_rand_time            1000
 
 #define SWITCH_VIEW(view) switch_view(fnaf, view)
 
